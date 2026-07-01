@@ -1870,8 +1870,8 @@ h1, h2, h3, h4, .logo-serif {
   
   /* Mobile BGM styles */
   .audio-player-container {
-    bottom: 20px;
-    left: 20px;
+    bottom: 105px; /* Above the FAB */
+    right: 30px;
     gap: 8px;
   }
   .audio-toggle-btn {
@@ -1886,10 +1886,11 @@ h1, h2, h3, h4, .logo-serif {
 /* Audio Player BGM styling (Global) */
 .audio-player-container {
   position: fixed;
-  bottom: 30px;
-  left: 30px;
+  bottom: 105px; /* Positioned above the FAB */
+  right: 30px;   /* Positioned on the right */
   z-index: 1000;
   display: flex;
+  flex-direction: row-reverse; /* Button on the right, track info expands to the left */
   align-items: center;
   gap: 12px;
 }

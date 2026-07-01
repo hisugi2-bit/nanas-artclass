@@ -231,6 +231,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (bgmAudio && bgmToggleBtn && bgmTrackInfo) {
     bgmToggleBtn.addEventListener('click', () => {
+      toggleBGM();
+    });
+
+    function toggleBGM() {
       if (bgmAudio.paused) {
         bgmAudio.play()
           .then(() => {
@@ -250,7 +254,38 @@ document.addEventListener('DOMContentLoaded', () => {
         bgmToggleBtn.classList.remove('playing');
         bgmTrackInfo.classList.remove('show');
       }
-    });
+    }
+
+    // Autoplay BGM on first scroll / touch interaction for mobile
+    const playOnFirstInteraction = () => {
+      // Check if it's mobile screen (<= 768px) and music is not already playing
+      if (window.innerWidth <= 768 && bgmAudio.paused) {
+        bgmAudio.play()
+          .then(() => {
+            bgmToggleBtn.classList.add('playing');
+            bgmTrackInfo.classList.add('show');
+            // Hide the BGM title banner automatically after 4 seconds
+            setTimeout(() => {
+              bgmTrackInfo.classList.remove('show');
+            }, 4000);
+            
+            // Successfully played, remove event listeners so they don't trigger again
+            removeAutoplayListeners();
+          })
+          .catch(err => {
+            console.log("Autoplay blocked by browser policy:", err);
+          });
+      }
+    };
+
+    function removeAutoplayListeners() {
+      window.removeEventListener('scroll', playOnFirstInteraction);
+      window.removeEventListener('touchstart', playOnFirstInteraction);
+    }
+
+    // Add scroll and touchstart listeners for autoplay behavior
+    window.addEventListener('scroll', playOnFirstInteraction, { passive: true });
+    window.addEventListener('touchstart', playOnFirstInteraction, { passive: true });
   }
 
 });
