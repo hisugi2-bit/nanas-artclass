@@ -656,6 +656,24 @@
       </div>
     </footer>
 
+    <!-- Audio Player (BGM) -->
+    <div class="audio-player-container" id="audio-player-container">
+      <button class="audio-toggle-btn" id="audio-toggle-btn" aria-label="배경음악 켜기/끄기">
+        <div class="sound-waves" id="sound-waves">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <i class="fa-solid fa-music music-icon" id="music-icon"></i>
+      </button>
+      <div class="audio-track-info" id="audio-track-info">
+        <span class="track-title">Ochre & Crimson</span>
+        <span class="track-artist">Background BGM</span>
+      </div>
+      <audio id="bgm-audio" loop src="/assets/Ochre_and_Crimson.mp3"></audio>
+    </div>
+
     <!-- Floating Action Button for Kakao/Insta Inquiry -->
     <div class="fab-wrapper" id="fab">
       <button class="fab-main-btn" aria-label="빠른 문의">

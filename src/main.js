@@ -224,4 +224,33 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // 10. Background Music BGM Player Logic
+  const bgmAudio = document.getElementById('bgm-audio');
+  const bgmToggleBtn = document.getElementById('audio-toggle-btn');
+  const bgmTrackInfo = document.getElementById('audio-track-info');
+
+  if (bgmAudio && bgmToggleBtn && bgmTrackInfo) {
+    bgmToggleBtn.addEventListener('click', () => {
+      if (bgmAudio.paused) {
+        bgmAudio.play()
+          .then(() => {
+            bgmToggleBtn.classList.add('playing');
+            bgmTrackInfo.classList.add('show');
+            // Hide the BGM title banner automatically after 4 seconds
+            setTimeout(() => {
+              bgmTrackInfo.classList.remove('show');
+            }, 4000);
+          })
+          .catch(error => {
+            console.error("Audio playback failed:", error);
+            alert("음원 재생에 실패했습니다. 브라우저의 오디오 설정을 확인해 주세요.");
+          });
+      } else {
+        bgmAudio.pause();
+        bgmToggleBtn.classList.remove('playing');
+        bgmTrackInfo.classList.remove('show');
+      }
+    });
+  }
+
 });
