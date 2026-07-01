@@ -1518,6 +1518,7 @@ h1, h2, h3, h4, .logo-serif {
   display: flex;
   flex-direction: column;
   align-items: center;
+  pointer-events: none; /* Make container click-through */
 }
 
 .fab-main-btn {
@@ -1528,6 +1529,7 @@ h1, h2, h3, h4, .logo-serif {
   color: var(--text-light);
   border: none;
   box-shadow: var(--shadow-lg);
+  pointer-events: auto; /* Re-enable clicks */
   font-size: 1.5rem;
   cursor: pointer;
   z-index: 10;
@@ -1575,6 +1577,7 @@ h1, h2, h3, h4, .logo-serif {
   font-size: 1.1rem;
   box-shadow: var(--shadow-md);
   transition: var(--transition-smooth);
+  pointer-events: auto; /* Re-enable clicks */
 }
 
 .fab-item:hover {
@@ -1893,6 +1896,7 @@ h1, h2, h3, h4, .logo-serif {
   flex-direction: row-reverse; /* Button on the right, track info expands to the left */
   align-items: center;
   gap: 12px;
+  pointer-events: none; /* Make container click-through */
 }
 
 .audio-toggle-btn {
@@ -1911,6 +1915,7 @@ h1, h2, h3, h4, .logo-serif {
   color: var(--text-dark);
   overflow: hidden;
   outline: none;
+  pointer-events: auto; /* Re-enable clicks */
 }
 
 .audio-toggle-btn:hover {
